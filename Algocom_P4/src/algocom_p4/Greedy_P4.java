@@ -4,22 +4,17 @@
  * and open the template in the editor.
  */
 package algocom_p4;
-  
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
 
 /**
  *
  * @author Hannah Sy
  */
-public class driver {
-
-    /**
-     * @param args the command line arguments
-     */
-
+public class Greedy_P4 {
+    
     //Number 1
 	private static class Table {
 		private int name;
@@ -97,7 +92,7 @@ public class driver {
 	public static void assignTable(String[] input) {
 		int[] s, TS, TC;
 		int pos = 1;
-			
+		
 		ArrayList<Team> team = new ArrayList<Team>();
 		ArrayList<Table> tableList = new ArrayList<Table>();
 		
@@ -140,13 +135,12 @@ public class driver {
 		}
 		
                       
-         for(int l=0;l<team.size();l++)
+        for(int l=0;l<team.size();l++)
                 {
 			if(team.get(l).getSize() != 0) {
 				pos = 0;
 			}
 		}
-	
 			
 		System.out.println(pos);
 		
@@ -250,46 +244,25 @@ public class driver {
 	}
 
 	public static void design(int[] floors) {
-		ArrayList<Integer> neg = new ArrayList<Integer>();
-		ArrayList<Integer> pos = new ArrayList<Integer>();
+		ArrayList<Integer> negative = new ArrayList<Integer>();
+		ArrayList<Integer> positive = new ArrayList<Integer>();
 	
                 for(int i = 0 ;i<floors.length;i++)
                 {if(floors[i] > 0) {
-				pos.add(floors[i]);
+				positive.add(floors[i]);
 			}else{ 
-				neg.add(floors[i]);
+				negative.add(floors[i]);
 			}
 		}
 		
-		Collections.sort(neg);
-		Collections.sort(pos, Collections.reverseOrder());
+		Collections.sort(negative);
+		Collections.sort(positive, Collections.reverseOrder());
 		
-		if(Math.abs(neg.get(0)) > pos.get(0)) {
-			buildingdesign(neg, pos);
+		if(Math.abs(negative.get(0)) > positive.get(0)) {
+			buildingdesign(negative, positive);
 		}else{
-			buildingdesign(pos, neg);
+			buildingdesign(positive, negative);
 		}	  
 	}
 
-	
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-        
-        String[] s = {"4 5", "4 5 3 5", "3 5 2 6 4"};
-		assignTable(s);
-//		
-//		int[] time = { 1, 2 ,3};
-//		int[] fine = {1,2,3};
-//		shoemaker(time, fine);
-
-//		int[] floors = {5, 7, -2, 6, 9, -3};
-//		int[] floors = {8, 11, -9, 2, 5, 18, 17, -15, 4};
-		//int[] floors = {33, 41, 64, 79, -61, 10, 84, 99, -26, 56, 78, -46, -45, 3, 43, 16, -57, -59, 67, 35};
-		//int[] floors = {-42, 57, -60, -96, 20, -52, 83, 33, -15, -14, -71, 41, 2, 43, 89, -61, 66, 29, -24, 4};
-//		design(floors);
-
-		
-	}
-    }
-    
+}
